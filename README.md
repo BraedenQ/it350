@@ -1,7 +1,7 @@
 IT350 Project
 
 You need to use the test.sql file to load the sample database that I created.
-You can do this by running 'mysql -u <user> -p < test.dump
+You can do this by running 'mysql -uroot -p < test.dump
 
 You will also need to add the line '127.0.0.1       clinic.com' to your /etc/hosts file.
 
