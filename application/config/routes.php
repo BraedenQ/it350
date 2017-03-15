@@ -51,7 +51,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 
-$route['helloworld'] = 'helloworld';
 $route['clinic/(:any)'] = 'clinic/view/$1';
 $route['clinic'] = 'clinic';
 

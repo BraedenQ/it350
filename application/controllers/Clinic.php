@@ -23,15 +23,15 @@ class Clinic extends CI_Controller {
         {
                 $data['clinic'] = $this->clinic_model->get_clinics($clinicID);
                 if (empty($data['clinic']))
-		        {
-		                show_404();
-		        }
+	        {
+	               show_404();
+	        }
 
 		        
-		        $data['title'] = 'Clinic View';
+	        $data['title'] = 'Clinic View';
 
-		        $this->load->view('templates/header', $data);
-		        $this->load->view('clinic/view', $data);
-		        $this->load->view('templates/footer');
+	        $this->load->view('templates/header', $data);
+	        $this->load->view('clinic/view', $data);
+	        $this->load->view('templates/footer');
         }
 }
