@@ -10,6 +10,4 @@ You may or may not need to change the owner.
 
 If you used a different user and password when setting up the database you will need to edit application/config/database.php and change the username and password.
 
-test
-
 When your done you should be able to go to http://www.clinic.com/index.php/clinic/ and see the sample page I setup.
