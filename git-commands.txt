@@ -1,0 +1,16 @@
+#This shows if everything is up to date
+git status
+
+#add files
+git add {file name}
+
+#make a commit
+git commit -m '{sample message}'
+
+#push up to master
+git push origin master
+
+#pull from master
+git pull origin master
+
+
