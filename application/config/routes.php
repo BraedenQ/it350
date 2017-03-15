@@ -54,7 +54,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['clinic/(:any)'] = 'clinic/view/$1';
 $route['clinic'] = 'clinic';
 $route['home'] = 'home';
-$route['verifylogin'] = 'verifylogin';
+$route['login'] = 'login';
+$route['verifylogin'] = 'verifyLogin';
 
 
 $route['default_controller'] = 'home';
