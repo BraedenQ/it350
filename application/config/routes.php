@@ -56,6 +56,6 @@ $route['clinic/(:any)'] = 'clinic/view/$1';
 $route['clinic'] = 'clinic';
 
 
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'clinic';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
