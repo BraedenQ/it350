@@ -13,4 +13,7 @@ git push origin master
 #pull from master
 git pull origin master
 
-
+#When wanting to delete changes made before committing,
+#you can stash them then drop them
+git stash save --keep-index
+git stash drop
