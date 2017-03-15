@@ -53,8 +53,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['clinic/(:any)'] = 'clinic/view/$1';
 $route['clinic'] = 'clinic';
+$route['home'] = 'home';
 
 
-$route['default_controller'] = 'clinic';
+$route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
