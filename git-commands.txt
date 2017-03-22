@@ -17,3 +17,5 @@ git pull origin master
 #you can stash them then drop them
 git stash save --keep-index
 git stash drop
+
+
