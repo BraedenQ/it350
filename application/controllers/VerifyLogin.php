@@ -21,7 +21,6 @@ class VerifyLogin extends CI_Controller {
    if($this->form_validation->run() == FALSE)
    {
      //Field validation failed.  User redirected to login page
-     //die(print('test'));
      $this->load->view('login/index');
    }
    else
@@ -38,19 +37,27 @@ class VerifyLogin extends CI_Controller {
    //Field validation succeeded.  Validate against database
    $username = $this->input->post('username');
    //query the database
+   
    $result = $this->user_model->login($username, $password);
- 
+   //die(print("here"));
+   //die(print("hi"));
+   //die(var_dump($result));
+  
    if($result)
    {
      $sess_array = array();
+     //die(print("wait"));
+     //die(var_dump($result));
      foreach($result as $row)
      {
        $sess_array = array(
          'id' => $row->id,
          'username' => $row->username
        );
+       //die(var_dump($row));
        $this->session->set_userdata('logged_in', $sess_array);
      }
+     die(var_dump($sess_array));
      return TRUE;
    }
    else
