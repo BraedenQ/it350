@@ -16,4 +16,5 @@ class Clinic_model extends CI_Model {
         $query = $this->db->get_where('test2', array('name' => $clinicID));
         return $query->row_array();
 	}
+    
 }
