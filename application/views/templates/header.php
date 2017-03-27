@@ -40,6 +40,10 @@
 					        <li class=""><a href="#">Link <span class="sr-only">(current)</span></a></li>
 					        <li><a href="#">Link</a></li>
 					        <li><a href="#">Link</a></li>
+					        <li><a><?php
+					        if (isset($username)) {
+					         	echo "Hello ".$username;
+					         } ?></a><li>
 			      		</ul>
 			      		<ul class="nav navbar-nav navbar-right">
 			        		<li><a href="#">Link</a></li>
