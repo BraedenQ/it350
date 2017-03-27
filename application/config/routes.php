@@ -58,6 +58,6 @@ $route['login'] = 'login';
 $route['verifylogin'] = 'verifyLogin';
 
 
-$route['default_controller'] = 'home';
+$route['default_controller'] = 'login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
