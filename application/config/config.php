@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http//clinic.com';
+$config['base_url'] = 'http://clinic.com:80/index.php/';
 
 /*
 |--------------------------------------------------------------------------

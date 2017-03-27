@@ -5,6 +5,6 @@
         <div class="main">
                 <?php echo $clinic['computer']; ?>
         </div> 
-         <p><a href="<?php echo "/index.php/clinic/".$clinic['name'] ?>">View Person</a></p> 
+         <p><a href="<?php echo site_url('clinic/'.$clinic['name']); ?>">View Person</a></p> 
 
 <?php endforeach; ?>
