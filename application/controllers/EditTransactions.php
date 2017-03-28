@@ -1,16 +1,16 @@
 <?php
-class editTransactions extends CI_Controller {
+class EditTransactions extends CI_Controller {
 
         public function __construct()
         {
-                parent::__construct();
-                $this->load->model('editTransactions_model');
+            parent::__construct();
+            $this->load->model('editTransactions_model');
         
         }
 
         public function index()
         {
-             $data['transactions'] = $this->editTransactions_model->get_transactions();
+             $data['edit'] = $this->editTransactions_model->get_transactions();
 	        $data['title'] = 'Edit Transactions';
 
 	        $this->load->view('templates/header', $data);

@@ -1,5 +1,5 @@
 <?php
-class editTransactions_model extends CI_Model {
+class EditTransactions_model extends CI_Model {
 
     public function get_transactions()
 	{
