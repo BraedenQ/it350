@@ -57,6 +57,7 @@ $route['home'] = 'home';
 $route['login'] = 'login';
 $route['verifylogin'] = 'verifyLogin';
 $route['transactions'] = 'transactions';
+$route['editTransactions'] = 'editTransactions';
 
 $route['default_controller'] = 'login';
 $route['404_override'] = '';
