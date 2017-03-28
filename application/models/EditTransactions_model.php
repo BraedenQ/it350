@@ -9,6 +9,9 @@ class EditTransactions_model extends CI_Model {
         //return $query->row_array();
         return $query->result_array();
     }
-
+    public function add($type, $amount)
+    {
+    	$query = $this -> db -> query("INSERT INTO transactions(buildID, type, amount) VALUES (1, {$type}, {$amount})";
+    }
 }
 ?>
