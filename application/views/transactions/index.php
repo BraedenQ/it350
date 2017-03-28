@@ -1,11 +1,15 @@
 <h2><?php echo $title; ?></h2>
-
-<?php foreach ($transactions as $transaction): ?>
-
-        <h3><?php echo "Transaction ID: {$transaction['transID']}"; ?></h3>
-        <div class="main">
-                <?php echo $transaction['type']; ?>
-                <?php echo $transaction['amount']; ?>
-        </div> 
-        
-<?php endforeach; ?>
+<table>
+	<tr>
+		<th>Transaction ID</th>
+		<th>Type</th>
+		<th>Amount</th>
+	</tr>
+	<?php foreach ($transactions as $transaction): ?>
+		<tr>
+	       <td><?php echo "{$transaction['transID']}"; ?></td>
+	       <td><?php echo "{$transaction['type']}"; ?></td>
+	       <td><?php echo "{$transaction['amount']}"; ?></td> 
+       </tr>   
+	<?php endforeach; ?>
+</table>
