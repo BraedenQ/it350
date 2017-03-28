@@ -10,9 +10,9 @@ class EditTransactions extends CI_Controller {
 
         public function index()
         {
-            $data['edit'] = $this->editTransactions_model->get_transactions();
+            $data['latest'] = $this->editTransactions_model->get_latest_transaction();
 	        $data['title'] = 'Edit Transactions';
-
+	        $
 	        $this->load->view('templates/header', $data);
 	        $this->load->view('editTransactions/index', $data);
 	        $this->load->view('templates/footer');
@@ -22,9 +22,9 @@ class EditTransactions extends CI_Controller {
         {
         	$amount = $this->input->post("amount");
         	$type = $this->input->post("type");
+        	$transaction = $this->input->post("transaction");
 
-
-        	$this->editTransactions_model->add($type, $amount);
+        	$this->editTransactions_model->add($type, $amount, $transaction);
         	$this->load->view('templates/header', $data);
 	        $this->load->view('editTransactions/index', $data);
 	        $this->load->view('templates/footer');
