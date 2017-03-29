@@ -37,7 +37,21 @@ class EditTransactions extends CI_Controller {
         }
         
 
+        public function remove()
+        {
+            //prep variables
+            $amount = $this->input->post("transID");
 
+            //change database
+            $this->editTransactions_model->add($type, $amount, $transaction);
+
+            //load transactions
+            $data['transactions'] = $this->editTransactions_model->get_transactions();
+            $data['title'] = 'Clinic Transactions';
+            $this->load->view('templates/header', $data);
+            $this->load->view('transactions/index', $data);
+            $this->load->view('templates/footer');
+        }
         
 }
 ?>
