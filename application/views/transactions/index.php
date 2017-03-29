@@ -13,4 +13,5 @@
        </tr>   
 	<?php endforeach; ?>
 </table>
-
+<br/>
+<p><a href="<?php echo site_url('editTransactions'); ?>">Edit Transactions</a></p> 
