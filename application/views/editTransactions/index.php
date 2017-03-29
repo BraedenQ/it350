@@ -7,7 +7,7 @@ Add a Transaction: <br/>
 </form>
 
 Delete a Transaction: <br/>
-<form name ="userinput" action="editTransactions/add" method="post">
+<form name ="userinput2" action="editTransactions/remove" method="post">
 	Transaction ID: <input type="number" name="transID"> <br/>
 	<input type="submit" value="Submit">
 </form>

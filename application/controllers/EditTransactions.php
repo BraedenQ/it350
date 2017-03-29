@@ -35,15 +35,14 @@ class EditTransactions extends CI_Controller {
 	        $this->load->view('transactions/index', $data);
 	        $this->load->view('templates/footer');
         }
-        
-
+            
         public function remove()
         {
             //prep variables
-            $amount = $this->input->post("transID");
+            $transID = $this->input->post("transID");
 
             //change database
-            $this->editTransactions_model->add($type, $amount, $transaction);
+            $this->editTransactions_model->remove($transID);
 
             //load transactions
             $data['transactions'] = $this->editTransactions_model->get_transactions();
