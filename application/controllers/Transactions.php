@@ -10,7 +10,11 @@ class Transactions extends CI_Controller {
 
         public function index()
         {
-                $data['transactions'] = $this->Transactions_model->get_transactions();
+
+                $session_data = $this->session->userdata('logged_in');
+                $busID = $session_data['busID'];
+
+                $data['transactions'] = $this->Transactions_model->get_transactions($busID);
 	        $data['title'] = 'Clinic Transactions';
 
 	        $this->load->view('templates/header', $data);
