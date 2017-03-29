@@ -40,7 +40,7 @@
   }
  </style>
 
-<body>
+<body style="background-color: #dfdfdf;">
   <div class="customFormLocation">
     <div class="row">
       <div class="col-md-4"></div>
