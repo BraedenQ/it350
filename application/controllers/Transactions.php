@@ -10,16 +10,24 @@ class Transactions extends CI_Controller {
 
         public function index()
         {
+                if($this->session->userdata('logged_in'))
+                {
+                        $session_data = $this->session->userdata('logged_in');
+                        $busID = $session_data['busID'];
+                        $data['username'] = $session_data['username'];
 
-                $session_data = $this->session->userdata('logged_in');
-                $busID = $session_data['busID'];
+                        $data['transactions'] = $this->Transactions_model->get_transactions($busID);
+                        $data['title'] = 'Clinic Transactions';
 
-                $data['transactions'] = $this->Transactions_model->get_transactions($busID);
-	        $data['title'] = 'Clinic Transactions';
-
-	        $this->load->view('templates/header', $data);
-	        $this->load->view('transactions/index', $data);
-	        $this->load->view('templates/footer');
+                        $this->load->view('templates/header', $data);
+                        $this->load->view('transactions/index', $data);
+                        $this->load->view('templates/footer');
+                }
+                else 
+                {
+                        //If no session, redirect to login page
+                        redirect('login', 'refresh');
+                }
         }
         
 }

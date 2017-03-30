@@ -9,10 +9,15 @@ class Login extends CI_Controller {
  
  function index()
  {
-   $this->load->helper(array('form'));
-   $this->load->view('login/index.php');
+ 	if($this->session->userdata('logged_in'))
+	{
+		redirect('home', 'refresh');
+	}
+	else{
+		$this->load->helper(array('form'));
+		$this->load->view('login/index.php');
+	}
  }
- 
 }
  
 ?>

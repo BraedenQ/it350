@@ -34,6 +34,10 @@
 
 			    <!-- Collect the nav links, forms, and other content for toggling -->
 			    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			    		<ul class="nav navbar-nav navbar-left">
+			        		<li><a href="/index.php/home">Home</li>
+					     
+			      		</ul>
 			      		<ul class="nav navbar-nav">
 					      	<li><a class="navbar-brand"><?php echo $title; ?></a></li>
 					        <li class=""><a href="#">Link <span class="sr-only">(current)</span></a></li>
@@ -46,6 +50,7 @@
 					        if (isset($username)) {
 					         	echo "Hello ".$username;
 					         } ?></a></li>
+					         <li><a href="home/logout" style="text-decoration: none; cursor: initial;">Logout</a></li>
 			      		</ul>
 			    	</div><!-- /.navbar-collapse -->
 			  	</div><!-- /.container-fluid -->

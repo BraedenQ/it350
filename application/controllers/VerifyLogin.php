@@ -27,7 +27,7 @@ class VerifyLogin extends CI_Controller {
    else
    {
      //Go to private area
-     redirect('/home/index', 'location');
+     redirect('/home', 'location');
      //$this->load->view('home/index');
      //$this->load->view('home/index');
    }
