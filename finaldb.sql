@@ -204,7 +204,7 @@ CREATE TABLE `jobReview` (
 
 LOCK TABLES `jobReview` WRITE;
 /*!40000 ALTER TABLE `jobReview` DISABLE KEYS */;
-INSERT INTO `jobReview` VALUES (1,201,'Great Job. Don\'t Suck.'),(2,202,'I like where you\'re going'),(3,203,'Great work!'),(4,204,'You\'re about to be fired'),(5,205,'Work out more');
+INSERT INTO `jobReview` VALUES (1,1,'Great Job. Don\'t Suck.'),(2,2,'I like where you\'re going'),(3,3,'Great work!'),(4,4,'You\'re about to be fired'),(5,5,'Work out more');
 /*!40000 ALTER TABLE `jobReview` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -334,7 +334,7 @@ CREATE TABLE `transactions` (
 
 LOCK TABLES `transactions` WRITE;
 /*!40000 ALTER TABLE `transactions` DISABLE KEYS */;
-INSERT INTO `transactions` VALUES (1,1,'Equipment',12.86),(1,2,'Staffing',80.56),(2,1,'Staffing',50.6),(2,2,'Equipment',80.2),(3,1,'Services',100.65),(3,2,'More equipement',100.25),(4,1,'Insurance',50.98),(4,2,'Rent',158.25),(5,1,'New Computer',20.65);
+INSERT INTO `transactions` VALUES (1,1,'Equipment',12.86),(1,2,'Staffing',80.56),(2,1,'Staffing',50.6),(2,2,'Equipment',80.2),(3,1,'Services',100.65),(3,2,'More equipement',100.25),(4,1,'Insurance',50.98),(4,2,'Rent',158.25),(5,1,'test',2),(5,2,'test',3),(6,2,'',0);
 /*!40000 ALTER TABLE `transactions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -351,7 +351,7 @@ CREATE TABLE `users` (
   `username` varchar(10) NOT NULL,
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -360,7 +360,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,1,'admin','21232f297a57a5a743894a0e4a801fc3');
+INSERT INTO `users` VALUES (1,1,'admin','21232f297a57a5a743894a0e4a801fc3'),(2,2,'user','5f4dcc3b5aa765d61d8327deb882cf99'),(3,2,'users2','5f4dcc3b5aa765d61d8327deb882cf99');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -373,4 +373,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-27 14:18:53
+-- Dump completed on 2017-03-29 20:30:14

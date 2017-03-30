@@ -15,6 +15,9 @@
 							<td><a href="<?php echo site_url('inventory'); ?>">Inventory</a></td>
 						</tr>
 						<tr>
+							<td><a href="<?php echo site_url('staff'); ?>">Staff</a></td>
+						</tr>
+						<tr>
 							<td><a href="<?php echo site_url('doctors'); ?>">Doctors</a></td>
 						</tr>
 					</tbody>
