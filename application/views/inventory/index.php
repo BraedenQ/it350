@@ -15,6 +15,7 @@
 						<?php foreach ($inventory as $item): ?>
 							<tr>
 						       <td><?php echo "{$item['invID']}"; ?></td>
+						       <td><?php echo "{$item['description']}"; ?></td>
 						       <td><?php echo "{$item['numberOfUnits']}"; ?></td>
 					       </tr>   
 						<?php endforeach; ?>

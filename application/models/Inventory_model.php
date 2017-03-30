@@ -9,7 +9,7 @@ class Inventory_model extends CI_Model {
         // NOTE: I know this I am assuming that a BusID is a building ID but we could add logic if we needed to.
         if($this->session->userdata('logged_in'))
         {
-            $this -> db -> select('invID, numberOfUnits');
+            $this -> db -> select('invID, numberOfUnits, description');
             $this -> db -> from('inventory');
             $this -> db -> where('busID', $busID);
             $query = $this -> db -> get();
