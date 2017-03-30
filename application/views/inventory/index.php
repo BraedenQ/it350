@@ -10,6 +10,7 @@
 					<table class="table table-bordered table-hover">
 						<tr>
 							<th>Inventory ID</th>
+							<th>Description</th>
 							<th>Number of Units</th>
 						</tr>
 						<?php foreach ($inventory as $item): ?>
