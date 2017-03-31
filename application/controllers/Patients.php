@@ -15,9 +15,11 @@ class Patients extends CI_Controller {
                         $session_data = $this->session->userdata('logged_in');
                         $busID = $session_data['busID'];
                         $data['username'] = $session_data['username'];
-                        $data['staff'] = $this->Staff_model->get_patients($busID);
+                        $data['patients'] = $this->Patients_model->get_patients($busID);
+                        //$data['title'] = $this->Patients_model->numberRows($busID);
                         //die(var_dump($data));
                         $data['title'] = 'Patient';
+
 
                         $this->load->view('templates/header', $data);
                         $this->load->view('patients/index', $data);

@@ -20,6 +20,9 @@
 						<tr>
 							<td><a href="<?php echo site_url('doctors'); ?>">Doctors</a></td>
 						</tr>
+						<tr>
+							<td><a href="<?php echo site_url('patients'); ?>">Patients</a></td>
+						</tr>
 					</tbody>
 				</table>
 			</div>

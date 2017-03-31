@@ -59,6 +59,7 @@ $route['verifylogin'] = 'verifyLogin';
 $route['transactions'] = 'transactions';
 $route['editTransactions'] = 'editTransactions';
 $route['doctors'] = 'doctors';
+$route['patients'] = 'patients';
 
 $route['default_controller'] = 'login';
 $route['404_override'] = '';
