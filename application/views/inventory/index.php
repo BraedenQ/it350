@@ -25,9 +25,9 @@
 				<div class="col-md-3"></div>
 			</div>
 
-			<!-- <div class="col-md-9">
-				<a class="btn btn-primary pull-right" href="<?php echo site_url('editTransactions'); ?>">Edit Transactions</a>
-			</div> -->
+			<div class="col-md-9">
+				<a class="btn btn-primary pull-right" href="<?php echo site_url('Inventory/editInventory'); ?>">Edit Inventory</a>
+			</div>
 		</div>
 	</div>
 </div>
