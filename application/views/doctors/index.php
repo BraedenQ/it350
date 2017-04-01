@@ -9,13 +9,19 @@
 				<div class="col-md-6">
 					<table class="table table-bordered table-hover">
 						<tr>
-							<th>Doctor Name</th>
-							<th>Doctor Type</th>
+							<th class="hide">EmpID</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Address</th>
+							<th>Type</th>
 							<th>Start Date</th>
 						</tr>
 						<?php foreach ($doctors as $doctor): ?>
 							<tr>
-						       <td><?php echo "{$doctor['firstName']} {$doctor['lastName']}"; ?></td>
+							   <th class="hide"><?php echo "{$doctor['emplID']}";?> </th>
+						       <td><?php echo "{$doctor['firstName']}"; ?></td>
+						       <td><?php echo "{$doctor['lastName']}"; ?></td>
+						       <td><?php echo "{$doctor['address']}"; ?></td>
 						       <td><?php echo "{$doctor['type']}"; ?></td>
 						       <td><?php echo "{$doctor['startDate']}"; ?></td>
 					       </tr>   
@@ -25,9 +31,9 @@
 				<div class="col-md-3"></div>
 			</div>
 
-			<!-- <div class="col-md-9">
-				<a class="btn btn-primary pull-right" href="<?php echo site_url('doctors'); ?>">Edit Transactions</a>
-			</div> -->
+			<div class="col-md-9">
+				<a class="btn btn-primary pull-right" href="<?php echo site_url('doctors/editDoctors'); ?>">Edit Doctors</a>
+			</div> 
 		</div>
 	</div>
 </div>
