@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 22, 2017 at 01:14 PM
+-- Generation Time: Apr 01, 2017 at 09:54 AM
 -- Server version: 5.7.17-0ubuntu0.16.04.1
 -- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `Business`
+-- Database: `business`
 --
 
 -- --------------------------------------------------------
@@ -125,6 +125,7 @@ INSERT INTO `employee` (`emplID`, `busID`, `firstName`, `lastName`, `address`, `
 CREATE TABLE `inventory` (
   `invID` int(11) NOT NULL,
   `busID` int(11) NOT NULL,
+  `Description` varchar(50) NOT NULL,
   `numberOfUnits` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -132,15 +133,15 @@ CREATE TABLE `inventory` (
 -- Dumping data for table `inventory`
 --
 
-INSERT INTO `inventory` (`invID`, `busID`, `numberOfUnits`) VALUES
-(1, 1, 10),
-(1, 2, 15),
-(2, 1, 53),
-(2, 2, 11),
-(3, 1, 96),
-(3, 2, 11),
-(4, 1, 6),
-(4, 2, 1);
+INSERT INTO `inventory` (`invID`, `busID`, `Description`, `numberOfUnits`) VALUES
+(1, 1, 'Needles', 10),
+(1, 2, 'Bandaids', 15),
+(2, 1, 'Bandage', 53),
+(2, 2, 'Tongue Depressors', 11),
+(3, 1, 'Cotton Balls', 96),
+(3, 2, 'Water Bottles', 11),
+(4, 1, 'Pens', 6),
+(4, 2, 'Scale', 1);
 
 -- --------------------------------------------------------
 
@@ -190,11 +191,11 @@ CREATE TABLE `jobReview` (
 --
 
 INSERT INTO `jobReview` (`revID`, `jobID`, `notes`) VALUES
-(1, 201, 'Great Job. Don\'t Suck.'),
-(2, 202, 'I like where you\'re going'),
-(3, 203, 'Great work!'),
-(4, 204, 'You\'re about to be fired'),
-(5, 205, 'Work out more');
+(1, 1, 'Great Job. Don\'t Suck.'),
+(2, 2, 'I like where you\'re going'),
+(3, 3, 'Great work!'),
+(4, 4, 'You\'re about to be fired'),
+(5, 5, 'Work out more');
 
 -- --------------------------------------------------------
 
@@ -274,6 +275,26 @@ INSERT INTO `supportStaff` (`emplID`, `job`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `test2`
+--
+
+CREATE TABLE `test2` (
+  `id` int(11) NOT NULL,
+  `name` varchar(128) NOT NULL,
+  `computer` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `test2`
+--
+
+INSERT INTO `test2` (`id`, `name`, `computer`) VALUES
+(1, 'tanner', 'mac'),
+(2, 'logan', 'pc');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `transactions`
 --
 
@@ -306,11 +327,18 @@ INSERT INTO `transactions` (`transID`, `buildID`, `type`, `amount`) VALUES
 --
 
 CREATE TABLE `users` (
-  `userID` int(11) NOT NULL,
-  `busID` int(11) NOT NULL,
-  `userPassword` varchar(100) DEFAULT NULL,
-  `signedIn` int(11) DEFAULT NULL
+  `userID` int(4) NOT NULL,
+  `busID` int(10) NOT NULL,
+  `username` varchar(10) NOT NULL,
+  `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`userID`, `busID`, `username`, `password`) VALUES
+(1, 1, 'admin', '21232f297a57a5a743894a0e4a801fc3');
 
 --
 -- Indexes for dumped tables
@@ -377,6 +405,12 @@ ALTER TABLE `supportStaff`
   ADD PRIMARY KEY (`emplID`);
 
 --
+-- Indexes for table `test2`
+--
+ALTER TABLE `test2`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `transactions`
 --
 ALTER TABLE `transactions`
@@ -408,10 +442,15 @@ ALTER TABLE `employee`
 ALTER TABLE `patient`
   MODIFY `patientID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
+-- AUTO_INCREMENT for table `test2`
+--
+ALTER TABLE `test2`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `userID` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
