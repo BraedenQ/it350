@@ -35,7 +35,7 @@
 			    <!-- Collect the nav links, forms, and other content for toggling -->
 			    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			      		<ul class="nav navbar-nav">
-					      	<li><a class="navbar-brand">EMR</a></li>
+					      	<li><a class="navbar-brand" href="<?php echo site_url('home');?>">EMR</a></li>
 					        <li class=""><a href="#">Link <span class="sr-only">(current)</span></a></li>
 					        <li><a href="#">Link</a></li>
 					        <li><a href="#">Link</a></li>
