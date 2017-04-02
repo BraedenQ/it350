@@ -33,30 +33,46 @@ class Doctors extends CI_Controller {
 
         public function editDoctors()
         {
-                if($this->session->userdata('logged_in'))
-                {
-                        $session_data = $this->session->userdata('logged_in');
-                        $data['title'] = 'Doctors';
-                        $data['username'] = $session_data['username'];
-                        $busID = $session_data["busID"];
-                        $emplID = $this->input->post("emplID");
-                        $firstName = $this->input->post("firstName");
-                        $lastName = $this->input->post("lastName");
-                        $address = $this->input->post("address");
-                        $startDate = $this->input->post("startDate");
-                        $type = $this->input->post("type");
+                $session_data = $this->session->userdata('logged_in');
+                $data['title'] = 'Doctors';
+                $data['username'] = $session_data['username'];
+                $busID = $session_data["busID"];
 
-                        $this->Doctors_model->edit($emplID,$busID, $type, $lastName,$address,$startDate)
+                $doctors = $this->input->post('doctors');
+                foreach ($doctors as $doc) {
+                    $empId = $doc['emplID'];
+                    $firstName = $doc['firstName'];
+                    $lastName = $doc['lastName'];
+                    $address = $doc['address'];
+                    $startDate = $doc['startDate'];
+                    $type = $doc['type'];
+                    // $employeeData = array(
+                    //         'firstName' => $doc['firstName'],
+                    //         'lastName' => $doc['lastName'],
+                    //         'address' => $doc['address'],
+                    //         'startDate' => $doc['startDate']
+                    // );
+                    // $type = array(
+                    //     'type' => $emp['type']
+                    // );
 
-                        $this->load->view('templates/header', $data);
-                        $this->load->view('doctors/index', $data);
-                        $this->load->view('templates/footer');
-                }        
-                else 
-                {
-                        //If no session, redirect to login page
-                        redirect('login', 'refresh');
+                    $this->Doctors_model->edit($empId,$busID,$type,$firstName, $lastName,$address,$startDate);
                 }
+
+
+
+                // $session_data = $this->session->userdata('logged_in');
+                // $data['title'] = 'Doctors';
+                // $data['username'] = $session_data['username'];
+                // $busID = $session_data["busID"];
+                // $emplID = $this->input->post("emplID");
+                // $firstName = $this->input->post("firstName");
+                // $lastName = $this->input->post("lastName");
+                // $address = $this->input->post("address");
+                // $startDate = $this->input->post("startDate");
+                // $type = $this->input->post("type");
+
+
         }
 
         public function add()
