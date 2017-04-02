@@ -1,7 +1,9 @@
 <?php
-class Staff_model extends CI_Model {
+class Staff_model extends CI_Model
+{
 
-    public function get_staff($busID) {
+    public function get_staff($busID)
+    {
         $this->db->select('employee.emplID, employee.firstName,employee.lastName,employee.address, employee.startDate,jobReview.notes,jobReview.jobID');
         $this->db->from('employee');
         $this->db->join('supportStaff', 'supportStaff.emplID = employee.emplID');
@@ -11,18 +13,20 @@ class Staff_model extends CI_Model {
         return $query->result_array();
     }
 
-    public function edit_staff($empId, $jobId, $data, $notes) {
+    public function edit_staff($empId, $jobId, $data, $notes)
+    {
         //Update the employee data
         $this->db->where('emplID', $empId);
         $this->db->update('employee', $data);
 
         //update the employee review notes
-        $this->db->where('jobID', $jobId);        
+        $this->db->where('jobID', $jobId);
         $this->db->update('jobReview', $notes);
     }
 
-    public function add_member($data) {
-        if ($data['busID'] != NULL) {
+    public function add_member($data)
+    {
+        if ($data['busID'] != null) {
             //add new employee to table
             $this->db->insert('employee', $data);
 
@@ -38,7 +42,13 @@ class Staff_model extends CI_Model {
         }
     }
 
-    public function delete_staff() {
+    public function delete_staff($data) {
+        //delete from employee table
+        $this->db->delete('employee', $data);
+        //grab job from supportStaff
+        // $this->db->select('job', $data);
+        // $query = $this->db->get();
+        // $job = $query->result_array();
     }
 }
 

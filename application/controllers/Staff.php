@@ -1,12 +1,15 @@
 <?php
-class Staff extends CI_Controller {
+class Staff extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model('Staff_model');
     }
 
-    public function index() {
+    public function index()
+    {
         if ($this->session->userdata('logged_in')) {
             $session_data = $this->session->userdata('logged_in');
             $busID = $session_data['busID'];
@@ -23,7 +26,8 @@ class Staff extends CI_Controller {
         }
     }
 
-    public function addStaff() {
+    public function addStaff()
+    {
         $employee = $this->input->post('employee');
         $session_data = $this->session->userdata('logged_in');
         $employeeData = array(
@@ -36,7 +40,8 @@ class Staff extends CI_Controller {
         $this->Staff_model->add_member($employeeData);
     }
 
-    public function updateStaff() {
+    public function updateStaff()
+    {
         $employees = $this->input->post('employees');
         foreach ($employees as $emp) {
             $empId = $emp['empId'];
@@ -52,5 +57,13 @@ class Staff extends CI_Controller {
             );
             $this->Staff_model->edit_staff($empId, $jobId, $employeeData, $notes);
         }
+    }
+
+    public function deleteStaff()
+    {
+        $empId = array(
+            'emplID' => $this->input->post('empId')
+        );
+        $this->Staff_model->delete_staff($empId);
     }
 }

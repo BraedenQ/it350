@@ -12,6 +12,7 @@
                             <tr>
                                 <th class="hide"></th>
                                 <th class="hide"></th>
+                                <th class="minus hide"></th>
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Address</th>
@@ -24,6 +25,7 @@
                                 <tr>
                                     <td class="hide empId"><?php echo "{$emp['emplID']}"?></td>
                                     <td class="hide jobId"><?php echo "{$emp['jobID']}"?></td>
+                                    <td class="minus hide" valign="middle" style="color: red;"><a class="deleteButton" onclick="deleteStaff($(this))"><i class="fa fa-minus" aria-hidden="true"></i></td>
                                     <td><?php echo "{$emp['firstName']}"; ?></td>
                                     <td><?php echo "{$emp['lastName']}" ?></td>
                                     <td><?php echo "{$emp['address']}" ?></td>
@@ -73,14 +75,26 @@
 </div><!-- End Modal -->
 
 <script type="text/javascript">
+    $(document).ready(function () {
+        // $(document).on('click', 'a.deleteButton', function () {
+        //     debugger;
+        //     delete($(this));
+        // });
+    });
+
     function enableEditMode($button) {
         $('.empId').each(function () { //Loops through the employee rows
             var $row = $(this).parent(); //grab the rows
-            $row.children().each(function () { //Loop through the elements in the row
-                var temp = $(this).text();
-                $(this).html("<input type='text' class='form-control' value='" + temp + "'/>");    
+            $row.children().each(function (i) { //Loop through the elements in the row
+                if (i != 2) {
+                    var temp = $(this).text();
+                    $(this).html("<input type='text' class='form-control' value='" + temp + "'/>");
+                } else {
+                    $('.minus').removeClass("hide");
+                }
             });
         });
+        
         $button.text("Done");
         $button.attr("onclick", "finishEditMode($(this))");
     }
@@ -96,25 +110,21 @@
                 "employees": employees
             }
         }).success(function () {
-            debugger;
             location.reload();
         }).error(function() {
-            debugger;
         });
     }
 
     function addNewEmp() {
         var newEmp = new employee(null, null, $('#fName').val(), $('#lName').val(), $('#address').val(), new Date(), null);
-        debugger;
         $.ajax({
-        	url: '<?php echo site_url('staff/addStaff');?>',
-        	type: 'POST',
-        	data: {
-        		"employee": newEmp
-        	}
+            url: '<?php echo site_url('staff/addStaff');?>',
+            type: 'POST',
+            data: {
+                "employee": newEmp
+            }
         }).success(function () {
-        	debugger;
-        	location.reload();	
+            location.reload();  
         });
     }
 
@@ -134,14 +144,27 @@
             var $row = $(this).parent();
             var empId = $row.children().eq(0).children().val();
             var jobId = $row.children().eq(1).children().val();
-            var firstName = $row.children().eq(2).children().val();
-            var lastName = $row.children().eq(3).children().val();
-            var address = $row.children().eq(4).children().val();
-            var startDate = $row.children().eq(5).children().val();
-            var notes = $row.children().eq(6).children().val();
+            var firstName = $row.children().eq(3).children().val();
+            var lastName = $row.children().eq(4).children().val();
+            var address = $row.children().eq(5).children().val();
+            var startDate = $row.children().eq(6).children().val();
+            var notes = $row.children().eq(7).children().val();
             var staffMember = new employee(empId, jobId, firstName, lastName, address, startDate, notes);
             employees[i] = staffMember;
         });
         return employees;
+    }
+
+    function deleteStaff($pos) {
+        var empId = $pos.parent().parent().children().eq(0).children().val();
+        $.ajax({
+            url: '<?php echo site_url('staff/deleteStaff');?>',
+            type: 'POST',
+            data: {
+                "empId": empId
+            }
+        }).success(function () {
+            location.reload();
+        });
     }
 </script>
