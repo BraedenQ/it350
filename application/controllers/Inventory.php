@@ -79,7 +79,7 @@ class Inventory extends CI_Controller {
             $invID = $this->input->post("invID");
 
             //change database
-            $this->Inventory_model->remove_inventory($invID);
+            $this->Inventory_model->remove_inventory($invID, $busID);
 
             //load transactions
             $data['inventory'] = $this->Inventory_model->get_inventory($busID);
@@ -88,6 +88,22 @@ class Inventory extends CI_Controller {
             $this->load->view('inventory/index', $data);
             $this->load->view('templates/footer');
         }
-        
+        public function updateInventory()
+        {
+                $inventory = $this->input->post('inventory');
+                foreach ($inventory as $item) {
+                        $invID = $item['invID'];
+                        $description = $item['description'];
+                        $numberOfUnits = $item['numberOfUnits'];
+                        $inventoryData = array(
+                            'invID' => $item['invID'],
+                            'description' => $item['description'],
+                            'numberOfUnits' => $item['numberOfUnits']
+                        );
+                        $session_data = $this->session->userdata('logged_in');
+                        $busID = $session_data["busID"];
+                        $this->Inventory_model->edit_inventory($invID, $inventoryData, $busID);
+                }   
+        }
 }
 ?>
