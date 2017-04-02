@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th class="hide"></th>
@@ -29,7 +29,7 @@
                                     <td><?php echo "{$emp['address']}" ?></td>
                                     <td><?php echo "{$emp['startDate']}"; ?></td>
                                     <td><?php echo "{$emp['notes']}"; ?></td>
-                               </tr>   
+                               </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
@@ -38,12 +38,39 @@
             </div>
             <div class="row">
                 <div class="col-md-11">
+                    <button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#newEmp">Add Employee</button>
                     <button class="btn btn-primary pull-right" onclick="enableEditMode($(this))">Edit Staff</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div id="newEmp" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <label for="fName">First Name</label>
+        <input type="text" class="form-control" name="fName" id="fName" />
+        <label for="lName">Last Name</label>
+        <input type="text" class="form-control" name="lName" id="lName" />
+        <label for="address">Address</label>
+        <input type="text" class="form-control" name="address" id="address" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" onclick="addNewEmp()" data-dismiss="modal">Save</button>
+      </div>
+    </div>
+
+  </div>
+</div><!-- End Modal -->
 
 <script type="text/javascript">
     function enableEditMode($button) {
@@ -76,6 +103,21 @@
         });
     }
 
+    function addNewEmp() {
+        var newEmp = new employee(null, null, $('#fName').val(), $('#lName').val(), $('#address').val(), new Date(), null);
+        debugger;
+        $.ajax({
+        	url: '<?php echo site_url('staff/addStaff');?>',
+        	type: 'POST',
+        	data: {
+        		"employee": newEmp
+        	}
+        }).success(function () {
+        	debugger;
+        	location.reload();	
+        });
+    }
+
     function employee(empId, jobId, firstName, lastName, address, startDate, notes) {
         this.empId = empId,
         this.jobId = jobId,
@@ -87,7 +129,7 @@
     }
 
     function makeObject() {
-        var employees =  [];        
+        var employees =  [];
         $('.empId').each(function (i) {
             var $row = $(this).parent();
             var empId = $row.children().eq(0).children().val();

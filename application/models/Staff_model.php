@@ -21,13 +21,29 @@ class Staff_model extends CI_Model {
         $this->db->update('jobReview', $notes);
     }
 
+    public function add_member($data) {
+        if ($data['busID'] != NULL) {
+            //add new employee to table
+            $this->db->insert('employee', $data);
+
+            //add to supportStaff
+            $empId = array('emplID' => $this->db->insert_id());
+            $this->db->insert('supportStaff', $empId);
+
+            //add to jobReview
+            $jobId = array('jobID' => $this->db->insert_id());
+            $this->db->insert('jobReview', $jobId);
+        } else {
+            redirect('login', 'refresh');
+        }
+    }
+
     public function delete_staff() {
     }
 }
-?>
 
 
-<!-- Select * 
+/* Select * 
 from staff a
 join employee b on a.emplId  = b.emplID
 join staff c
@@ -35,4 +51,4 @@ on b.emplID = c.emplID
 join job d
 on c.job = d.jobID
 join jobReview e
-on d.jobID = e.jobID -->
+on d.jobID = e.jobID */

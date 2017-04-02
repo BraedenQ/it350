@@ -23,11 +23,11 @@ DROP TABLE IF EXISTS `building`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `building` (
-  `buildID` int(11) NOT NULL,
+  `buildID` int(11) NOT NULL AUTO_INCREMENT,
   `busID` int(11) DEFAULT NULL,
   `address` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`buildID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -105,7 +105,7 @@ CREATE TABLE `employee` (
   `startDate` date DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
   PRIMARY KEY (`emplID`)
-) ENGINE=InnoDB AUTO_INCREMENT=206 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=226 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -114,7 +114,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-INSERT INTO `employee` VALUES (101,1,'Bob','C','495 Keylog Lane','1980-03-15',NULL),(102,2,'Shoe','D','20485 Green Way','1982-12-19',NULL),(103,1,'Grace','M','395929 Great Fire','1960-03-15',NULL),(104,1,'Runner','P','833 Tool Lane','1995-12-26',NULL),(105,2,'Great','A','38 Neat Lane','1990-12-12',NULL),(106,1,'Braeden','Q','485 Trace Hill','1991-01-16',NULL),(201,1,'Grace','Kim','94580 Main','2017-03-06',NULL),(202,2,'Fire','L','48503 Chill','2017-01-23',NULL),(203,2,'Fun','H','3948 Lost','2016-10-18',NULL),(204,2,'Tool','L','3948 Grab','2016-11-20',NULL),(205,1,'Platapus','Pacheco','38958 Phineas','2016-11-14',NULL);
+INSERT INTO `employee` VALUES (101,1,'Bob','C','495 Keylog Lane','1980-03-15',NULL),(102,2,'Shoe','D','20485 Green Way','1982-12-19',NULL),(103,1,'Grace','M','395929 Great Fire','1960-03-15',NULL),(104,1,'Runner','P','833 Tool Lane','1995-12-26',NULL),(105,2,'Great','A','38 Neat Lane','1990-12-12',NULL),(106,1,'Braeden','Q','485 Trace Hill','1991-01-16',NULL),(201,1,'Grace','Kim','94580 Main','2017-03-06',NULL),(202,2,'Fire','L','48503 Chill','2017-01-23',NULL),(203,2,'Fun','H','3948 Lost','2016-10-18',NULL),(204,2,'Tool','L','3948 Grab','2016-11-20',NULL),(205,1,'Platapus','Pacheco','38958 Phineas','2016-11-14',NULL),(224,1,'Tanner','Perdue','1234 main','2017-04-01',NULL),(225,1,'asdasd','asdasd','asd','2017-04-01',NULL);
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,12 +126,12 @@ DROP TABLE IF EXISTS `inventory`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `inventory` (
-  `invID` int(11) NOT NULL,
+  `invID` int(11) NOT NULL AUTO_INCREMENT,
   `busID` int(11) NOT NULL,
   `Description` varchar(50) NOT NULL,
   `numberOfUnits` int(11) DEFAULT NULL,
   PRIMARY KEY (`invID`,`busID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,11 +152,11 @@ DROP TABLE IF EXISTS `job`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `job` (
-  `jobID` int(11) NOT NULL,
+  `jobID` int(11) NOT NULL AUTO_INCREMENT,
   `inRoleSince` date DEFAULT NULL,
   `tenure` int(11) DEFAULT NULL,
   PRIMARY KEY (`jobID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -192,11 +192,11 @@ DROP TABLE IF EXISTS `jobReview`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `jobReview` (
-  `revID` int(11) NOT NULL,
+  `revID` int(11) NOT NULL AUTO_INCREMENT,
   `jobID` int(11) DEFAULT NULL,
   `notes` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`revID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -205,7 +205,7 @@ CREATE TABLE `jobReview` (
 
 LOCK TABLES `jobReview` WRITE;
 /*!40000 ALTER TABLE `jobReview` DISABLE KEYS */;
-INSERT INTO `jobReview` VALUES (1,1,'I\'m the best!'),(2,2,'I like where you\'re going'),(3,3,'Great work!'),(4,4,'You\'re about to be fired'),(5,5,'Work out more');
+INSERT INTO `jobReview` VALUES (1,1,'wahoo!'),(2,2,'I like where you\'re going'),(3,3,'Great work!'),(4,4,'You\'re about to be fired'),(5,5,'Work out more'),(6,10,NULL),(7,11,NULL);
 /*!40000 ALTER TABLE `jobReview` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -273,9 +273,9 @@ DROP TABLE IF EXISTS `supportStaff`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `supportStaff` (
   `emplID` int(11) NOT NULL,
-  `job` int(11) DEFAULT NULL,
-  PRIMARY KEY (`emplID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `job` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`job`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -284,7 +284,7 @@ CREATE TABLE `supportStaff` (
 
 LOCK TABLES `supportStaff` WRITE;
 /*!40000 ALTER TABLE `supportStaff` DISABLE KEYS */;
-INSERT INTO `supportStaff` VALUES (201,1),(202,2),(203,3),(204,4),(205,5);
+INSERT INTO `supportStaff` VALUES (201,1),(202,2),(203,3),(204,4),(205,5),(224,10),(225,11);
 /*!40000 ALTER TABLE `supportStaff` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -321,12 +321,12 @@ DROP TABLE IF EXISTS `transactions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `transactions` (
-  `transID` int(11) NOT NULL,
+  `transID` int(11) NOT NULL AUTO_INCREMENT,
   `buildID` int(11) NOT NULL,
   `type` varchar(20) DEFAULT NULL,
   `amount` double DEFAULT NULL,
   PRIMARY KEY (`transID`,`buildID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -352,7 +352,7 @@ CREATE TABLE `users` (
   `username` varchar(10) NOT NULL,
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -361,7 +361,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,1,'admin','21232f297a57a5a743894a0e4a801fc3');
+INSERT INTO `users` VALUES (1,1,'admin','21232f297a57a5a743894a0e4a801fc3'),(2,2,'user','5f4dcc3b5aa765d61d8327deb882cf99');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -374,4 +374,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-01 19:38:04
+-- Dump completed on 2017-04-01 22:12:54

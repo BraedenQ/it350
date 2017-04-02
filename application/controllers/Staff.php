@@ -23,16 +23,29 @@ class Staff extends CI_Controller {
         }
     }
 
+    public function addStaff() {
+        $employee = $this->input->post('employee');
+        $session_data = $this->session->userdata('logged_in');
+        $employeeData = array(
+                'busID' => $session_data['busID'],
+                'firstName' => $employee['firstName'],
+                'lastName' => $employee['lastName'],
+                'address' => $employee['address'],
+                'startDate' => date("Y-m-d")
+        );
+        $this->Staff_model->add_member($employeeData);
+    }
+
     public function updateStaff() {
         $employees = $this->input->post('employees');
         foreach ($employees as $emp) {
             $empId = $emp['empId'];
             $jobId = $emp['jobId'];
             $employeeData = array(
-                    'firstName' => $emp['firstName'],
-                    'lastName' => $emp['lastName'],
-                    'address' => $emp['address'],
-                    'startDate' => $emp['startDate']
+                'firstName' => $emp['firstName'],
+                'lastName' => $emp['lastName'],
+                'address' => $emp['address'],
+                'startDate' => $emp['startDate']
             );
             $notes = array(
                 'notes' => $emp['notes']
