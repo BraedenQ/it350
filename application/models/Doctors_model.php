@@ -14,34 +14,70 @@ class Doctors_model extends CI_Model {
     }
 
 
-    public function add($type, $amount, $transaction,$busID)
+    public function add($busID, $type, $lastName,$address,$startDate,$age)
     {
     	$data = array(
-    		//'emplID' => ($transaction + 1),
     		'busID' => $busID,
     		'firstName' => $type,
-    		'lastName'=> $amount
-    		'address'=> $amount
-    		'startDate'=> $amount
-    		'age' => $amount
+    		'lastName'=> $lastName,
+    		'address'=> $address,
+    		'startDate'=> $startDate,
+    		'age' => $age
     	);
-    	$this->db->insert('transactions',$data);
 
-   
+    	$this->db->insert('employee',$data);
+
+    	// This gets the last ID that was inserted.
+    	$emplID = $this->db->insert_id();
+
+    	$data = array(
+    		'emplId' => ($emplID),
+    		'type' => ($type)
+    	);
+
+    	$this->db->insert('doctor',$data);
 	}
 
-    public function remove($doctorID)
+	public function edit($emplID,$busID, $type, $lastName,$address,$startDate,$age)
     {
-        // $data = array('transID'=>$transID);
-        // $this->db->delete('transactions',$data);
+
+
+    	$data = array(
+    		'busID' => $busID,
+    		'firstName' => $type,
+    		'lastName'=> $lastName,
+    		'address'=> $address,
+    		'startDate'=> $startDate,
+    		'age' => $age
+    	);
+
+    	$this->db->where('emplID',$emplID);
+    	$this->db->update('employee',$data);
+
+    	$data = array(
+    		'emplId' => ($emplID),
+    		'type' => ($type)
+    	);
+
+    	$this->db->update('doctor',$data);
+
+	}
+
+    public function remove($emplID)
+    {
+
+        $data = array('emplID'=>$emplID);
+        $this->db->delete('employee',$data);
+        $data = array('emplId'=>$emplID);
+        $this->db->delete('doctors',$data);
 	}
 }
 ?>
 
-emplID
+<!-- emplID
 busID
 firstName
 lastName
 address
 startDate
-age
+age -->
