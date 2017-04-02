@@ -33,61 +33,63 @@ class Doctors extends CI_Controller {
 
         public function editDoctors()
         {
-                if($this->session->userdata('logged_in'))
-                {
-                        $session_data = $this->session->userdata('logged_in');
-                        $data['title'] = 'Edit Doctors';
-                        $data['username'] = $session_data['username'];
+                $session_data = $this->session->userdata('logged_in');
+                $data['title'] = 'Doctors';
+                $data['username'] = $session_data['username'];
+                $busID = $session_data["busID"];
 
-                        $this->load->view('templates/header', $data);
-                        $this->load->view('doctors/editDoctors', $data);
-                        $this->load->view('templates/footer');
-                }        
-                else 
-                {
-                        //If no session, redirect to login page
-                        redirect('login', 'refresh');
+                $doctors = $this->input->post('doctors');
+                foreach ($doctors as $doc) {
+                    $empId = $doc['emplID'];
+                    $firstName = $doc['firstName'];
+                    $lastName = $doc['lastName'];
+                    $address = $doc['address'];
+                    $startDate = $doc['startDate'];
+                    $type = $doc['type'];
+
+                    $this->Doctors_model->edit($empId,$busID,$type,$firstName, $lastName,$address,$startDate);
                 }
+
         }
 
         public function add()
         {
-
-
-                    //prep variables
+                //prep variables
                 $session_data = $this->session->userdata('logged_in');
                 $busID = $session_data["busID"];
-                $amount = $this->input->post("amount");
+                $firstName = $this->input->post("firstName");
+                $lastName = $this->input->post("lastName");
+                $address = $this->input->post("address");
+                $startDate = $this->input->post("startDate");
                 $type = $this->input->post("type");
 
-                    //die(print($transaction));
-                    //change database
-                $this->editTransactions_model->add($type, $amount, $transaction,$busID);
+                //die(print($transaction));
+                //change database
+                $this->Doctors_model->add($busID, $type, $lastName,$address,$startDate);
 
-                    //load transactions
-                $data['doctors'] = $this->editTransactions_model->get_transactions($busID);
-                $data['title'] = 'Edit Doctors';
+                //load transactions
+                $data['doctors'] = $this->Doctors_model->get_doctors($busID);
+                $data['title'] = 'Doctors';
                 $this->load->view('templates/header', $data);
                 $this->load->view('doctors/index', $data);
                 $this->load->view('templates/footer');
         }
 
-        public function remove()
+        public function delete()
         {
-                    //prep variables
-            $session_data = $this->session->userdata('logged_in');
-            $busID = $session_data["busID"];
-            $transID = $this->input->post("transID");
+                //prep variables
+                $session_data = $this->session->userdata('logged_in');
+                $emplID = $session_data["emplID"];
 
                     //change database
-            $this->editTransactions_model->remove($transID);
+                $this->Doctors_model->remove($transID);
 
                     //load transactions
-            $data['doctors'] = $this->editTransactions_model->get_transactions($busID);
-            $data['title'] = 'Edit Doctors';
-            $this->load->view('templates/header', $data);
-            $this->load->view('transactions/index', $data);
-            $this->load->view('templates/footer');
+                $data['doctors'] = $this->Doctors_model->get_doctors($busID);
+                $data['title'] = 'Doctors';
+                $this->load->view('templates/header', $data);
+                $this->load->view('doctors/index', $data);
+                $this->load->view('templates/footer');
         }
 }
 ?>

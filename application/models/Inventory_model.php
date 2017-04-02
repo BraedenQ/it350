@@ -45,8 +45,8 @@ class Inventory_model extends CI_Model {
     }
     public function add_inventory($description, $numUnits, $invID,$busID)
     {
-        $data = array('invID' => ($invID + 1),
-            
+        $data = array(
+            'invID' => ($invID + 1),
             'busID' => $busID,
             'description' => $description,
             'numberOfUnits'=> $numUnits
@@ -56,12 +56,18 @@ class Inventory_model extends CI_Model {
    
     }
 
-    public function remove_inventory($invID)
+    public function remove_inventory($invID, $busID)
     {
-        $data = array('invID'=>$invID);
+        $data = array('invID'=>$invID, 'busID'=>$busID,);
         $this->db->delete('inventory',$data);
    
     }
+    public function edit_inventory($invID, $inventoryData, $busID)
+    {
+        $this->db->where('invID', $invID);
+        $this->db->where('busID', $busID);
+        $this->db->update('inventory', $inventoryData);
 
+    }
 }
 ?>

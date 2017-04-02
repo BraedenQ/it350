@@ -31,5 +31,26 @@ class Patients extends CI_Controller {
                         redirect('login', 'refresh');
                 }
         }
+
+        public function editPatients()
+        {
+                $session_data = $this->session->userdata('logged_in');
+                $data['title'] = 'Patients';
+                $data['username'] = $session_data['username'];
+                $busID = $session_data["busID"];
+
+                $doctors = $this->input->post('patients');
+                foreach ($doctors as $doc) {
+                    $empId = $doc['emplID'];
+                    $firstName = $doc['firstName'];
+                    $lastName = $doc['lastName'];
+                    $address = $doc['address'];
+                    $startDate = $doc['startDate'];
+                    $type = $doc['type'];
+
+                    $this->Doctors_model->edit($empId,$busID,$type,$firstName, $lastName,$address,$startDate);
+                }
+
+        }
 }
 ?>
