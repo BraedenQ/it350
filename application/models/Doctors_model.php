@@ -14,7 +14,7 @@ class Doctors_model extends CI_Model {
     }
 
 
-    public function add($busID, $type, $lastName,$address,$startDate,$age)
+    public function add($busID, $type, $lastName,$address,$startDate)
     {
     	$data = array(
     		'busID' => $busID,
@@ -22,7 +22,6 @@ class Doctors_model extends CI_Model {
     		'lastName'=> $lastName,
     		'address'=> $address,
     		'startDate'=> $startDate,
-    		'age' => $age
     	);
 
     	$this->db->insert('employee',$data);
@@ -38,7 +37,7 @@ class Doctors_model extends CI_Model {
     	$this->db->insert('doctor',$data);
 	}
 
-	public function edit($emplID,$busID, $type, $lastName,$address,$startDate,$age)
+	public function edit($emplID,$busID, $type, $lastName,$address,$startDate)
     {
 
 
@@ -47,8 +46,7 @@ class Doctors_model extends CI_Model {
     		'firstName' => $type,
     		'lastName'=> $lastName,
     		'address'=> $address,
-    		'startDate'=> $startDate,
-    		'age' => $age
+    		'startDate'=> $startDate
     	);
 
     	$this->db->where('emplID',$emplID);
