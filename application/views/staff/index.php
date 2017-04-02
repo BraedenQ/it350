@@ -59,19 +59,7 @@
     }
 
     function finishEditMode($button) {
-        var employees =  [];
-        $('.empId').each(function (i) {
-            var $row = $(this).parent();
-            var empId = $row.children().eq(0).children().val();
-            var jobId = $row.children().eq(1).children().val();
-            var firstName = $row.children().eq(2).children().val();
-            var lastName = $row.children().eq(3).children().val();
-            var address = $row.children().eq(4).children().val();
-            var startDate = $row.children().eq(5).children().val();
-            var notes = $row.children().eq(6).children().val();
-            var staffMember = new employee(empId, jobId, firstName, lastName, address, startDate, notes);
-            employees[i] = staffMember;
-        });
+        var employees = makeObject();
         $button.text("Edit Staff");
         $button.attr("onclick", "enableEditMode($(this))");
         $.ajax({
@@ -96,5 +84,22 @@
         this.address = address,
         this.startDate = startDate,
         this.notes = notes
+    }
+
+    function makeObject() {
+        var employees =  [];        
+        $('.empId').each(function (i) {
+            var $row = $(this).parent();
+            var empId = $row.children().eq(0).children().val();
+            var jobId = $row.children().eq(1).children().val();
+            var firstName = $row.children().eq(2).children().val();
+            var lastName = $row.children().eq(3).children().val();
+            var address = $row.children().eq(4).children().val();
+            var startDate = $row.children().eq(5).children().val();
+            var notes = $row.children().eq(6).children().val();
+            var staffMember = new employee(empId, jobId, firstName, lastName, address, startDate, notes);
+            employees[i] = staffMember;
+        });
+        return employees;
     }
 </script>
