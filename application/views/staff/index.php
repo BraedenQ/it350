@@ -25,7 +25,7 @@
                                 <tr>
                                     <td class="hide empId"><?php echo "{$emp['emplID']}"?></td>
                                     <td class="hide jobId"><?php echo "{$emp['jobID']}"?></td>
-                                    <td class="minus hide" valign="middle" style="color: red;"><a class="deleteButton" onclick="deleteStaff($(this))"><i class="fa fa-minus" aria-hidden="true"></i></td>
+                                    <td class="minus hide" valign="middle" style="color: red;"><a class="deleteButton" onclick="deleteStaff($(this))"><i style="color: red;" class="fa fa-minus" aria-hidden="true"></i></td>
                                     <td><?php echo "{$emp['firstName']}"; ?></td>
                                     <td><?php echo "{$emp['lastName']}" ?></td>
                                     <td><?php echo "{$emp['address']}" ?></td>
