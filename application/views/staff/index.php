@@ -165,6 +165,8 @@
             }
         }).success(function () {
             location.reload();
+
         });
+        debugger;
     }
 </script>

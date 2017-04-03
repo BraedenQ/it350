@@ -24,6 +24,8 @@ class Doctors_model extends CI_Model {
     		'startDate'=> $startDate,
     	);
 
+        //die(var_dump($data));
+
     	$this->db->insert('employee',$data);
 
     	// This gets the last ID that was inserted.
@@ -69,7 +71,7 @@ class Doctors_model extends CI_Model {
         $data = array('emplID'=>$emplID);
         $this->db->delete('employee',$data);
         $data = array('emplId'=>$emplID);
-        $this->db->delete('doctors',$data);
+        $this->db->delete('doctor',$data);
 	}
 }
 ?>
