@@ -3,13 +3,12 @@ class Doctors_model extends CI_Model {
 
     public function get_doctors($busID)
 	{
-		//$this->db->select('employee.firstName,employee.lastName,employee.startDate,doctor.type');
 		$this->db->select('*');
 		$this->db->from('employee');
 		$this->db->join('doctor', 'doctor.emplID = employee.emplID');
 		$this->db->where('employee.busID',$busID);
+
 		$query = $this->db->get();
-		//die(var_dump($query->result_array()));
 		return $query->result_array();
     }
 
@@ -20,12 +19,10 @@ class Doctors_model extends CI_Model {
     		'busID' => $busID,
     		'firstName' => $type,
     		'lastName'=> $lastName,
-    		'address'=> $address,
-    		'startDate'=> $startDate,
+    		'address'=> $address
     	);
 
-        //die(var_dump($data));
-
+        $this->db->set('startDate', 'NOW()', FALSE);
     	$this->db->insert('employee',$data);
 
     	// This gets the last ID that was inserted.
@@ -51,8 +48,6 @@ class Doctors_model extends CI_Model {
     		'startDate'=> $startDate
     	);
 
-    	///die(var_dump($data));
-
     	$this->db->where('emplID',$emplID);
     	$this->db->update('employee',$data);
 
@@ -75,11 +70,3 @@ class Doctors_model extends CI_Model {
 	}
 }
 ?>
-
-<!-- emplID
-busID
-firstName
-lastName
-address
-startDate
-age -->

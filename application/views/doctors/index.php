@@ -5,9 +5,9 @@
 		</div>
 		<div class="panel-body">
 			<div class="row">
-				<div class="col-md-3"></div>
-				<div class="col-md-6">
-					<table class="table table-bordered table-hover">
+				<div class="col-md-1"></div>
+				<div class="col-md-10">
+					<table class="table table-hover">
 						<tr>
 							<th class="hide"></th>
 							<th class="minus hide"></th>
@@ -20,7 +20,7 @@
 						<?php foreach ($doctors as $doctor): ?>
 							<tr>
 							   <th class="hide empId"><?php echo "{$doctor['emplID']}";?> </th>
-						       <td class="minus hide" valign="middle" style="color: red;"><a class="deleteButton" onclick="deleteDoctor($(this))"><i class="fa fa-minus" aria-hidden="true"></i></td>
+						       <td class="minus hide" valign="middle" style="color: red;"><a class="deleteButton" onclick="deleteDoctor($(this))"><i style="color: red;" class="fa fa-minus" aria-hidden="true"></i></td>
 						       <td><?php echo "{$doctor['firstName']}"; ?></td>
 						       <td><?php echo "{$doctor['lastName']}"; ?></td>
 						       <td><?php echo "{$doctor['address']}"; ?></td>
@@ -34,8 +34,8 @@
 			</div>
 			  <div class="row">
 				<div class="col-md-11">
-					<button class="btn btn-primary pull-right" onclick="enableEditMode($(this))">Edit Doctors</button>
 					<button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#newDoc">Add Doctor</button>
+					<button class="btn btn-primary pull-right" onclick="enableEditMode($(this))">Edit Doctors</button>
 				</div> 
 			  </div>
 		</div>
@@ -98,10 +98,8 @@
                 "doctors": doctors
             }
         }).success(function () {
-            debugger;
             location.reload();
         }).error(function() {
-            debugger;
         });
     }
 
@@ -141,7 +139,6 @@
                 "doctor": newEmp
             }
         }).success(function () {
-        	//debugger;
             location.reload();  
         });
 

@@ -57,11 +57,6 @@ class Doctors extends CI_Controller {
                 //prep variables
                 $session_data = $this->session->userdata('logged_in');
                 $busID = $session_data["busID"];
-                // $firstName = $this->input->post("firstName");
-                // $lastName = $this->input->post("lastName");
-                // $address = $this->input->post("address");
-                // $startDate = $this->input->post("startDate");
-                // $type = $this->input->post("type");
 
                 $doc = $this->input->post('doctor');
             
@@ -71,18 +66,7 @@ class Doctors extends CI_Controller {
                 $startDate = $doc['startDate'];
                 $type = $doc['type'];
 
-
-
-                //die(print($transaction));
-                //change database
                 $this->Doctors_model->add($busID, $type, $lastName,$address,$startDate);
-
-                // //load transactions
-                // $data['doctors'] = $this->Doctors_model->get_doctors($busID);
-                // $data['title'] = 'Doctors';
-                // $this->load->view('templates/header', $data);
-                // $this->load->view('doctors/index', $data);
-                // $this->load->view('templates/footer');
         }
 
         public function delete()
