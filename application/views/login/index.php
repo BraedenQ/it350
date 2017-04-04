@@ -46,7 +46,7 @@
       <div class="col-md-4"></div>
       <div class="col-md-4">
         <h2 class="text-center" >EZ EMR Login</h2>
-        <p>If the login does not work correctly make sure your go to clinic.com/index.php/login </p>
+        <p>If the login does not work correctly make sure you go to clinic.com/index.php/login </p>
         <?php echo validation_errors(); ?>
       </div>
       <div class="col-md-4"></div>
