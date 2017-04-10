@@ -31,13 +31,16 @@
 					        <span class="icon-bar"></span>
 					        <span class="icon-bar"></span>
 				      	</button>
+				      	<ul class="nav navbar-nav">
+					      	<li><a class="navbar-brand" href="<?php echo site_url('home');?>">EZ EMR</a></li>
+			      		</ul>
 				    </div>
 
 			    <!-- Collect the nav links, forms, and other content for toggling -->
 			    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			      		<ul class="nav navbar-nav">
+			      		<!-- <ul class="nav navbar-nav">
 					      	<li><a class="navbar-brand" href="<?php echo site_url('home');?>">EZ EMR</a></li>
-			      		</ul>
+			      		</ul> -->
 			      		<ul class="nav navbar-nav navbar-right">
 			        		<li><a href="#" style="text-decoration: none; cursor: initial;"><?php
 					        if (isset($username)) {

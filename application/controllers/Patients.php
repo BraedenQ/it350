@@ -32,24 +32,37 @@ class Patients extends CI_Controller {
                 }
         }
 
-        public function editPatients()
+        public function addPatient()
         {
-                $session_data = $this->session->userdata('logged_in');
-                $data['title'] = 'Patients';
-                $data['username'] = $session_data['username'];
-                $busID = $session_data["busID"];
+            $patient = $this->input->post('patient');
+            $session_data = $this->session->userdata('logged_in');
+            $doc = rand(101, 103);
+            $patientData = array(
+                    'buildID' => $session_data['busID'],
+                    'firstName' => $patient['firstName'],
+                    'lastName' => $patient['lastName'],
+                    'address' => $patient['address'],
+                    'doctor' => $doc,
+                    'entryDate' => date("Y-m-d")
+            );
+            $this->Patients_model->add_patient($patientData);
+        }
 
-                $doctors = $this->input->post('patients');
-                foreach ($doctors as $doc) {
-                    $empId = $doc['emplID'];
-                    $firstName = $doc['firstName'];
-                    $lastName = $doc['lastName'];
-                    $address = $doc['address'];
-                    $startDate = $doc['startDate'];
-                    $type = $doc['type'];
-
-                    $this->Doctors_model->edit($empId,$busID,$type,$firstName, $lastName,$address,$startDate);
-                }
+        public function updatePatients()
+        {
+            $session_data = $this->session->userdata('logged_in');
+            $patients = $this->input->post('patients');
+            foreach ($patients as $patient) {
+            $patientData = array(
+                'buildID' => $session_data['busID'],
+                'patientID' => $patient['patientID'],
+                'firstName' => $patient['firstName'],
+                'lastName' => $patient['lastName'],
+                'address' => $patient['address'],
+                'entryDate' => $patient['entryDate']
+            );
+            $this->Patients_model->edit_patients($patientData);
+        }
 
         }
 }
