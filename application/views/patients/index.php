@@ -40,7 +40,7 @@
 			</div>
 			<div class="row">
                 <div class="col-md-11">
-                    <button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#newEmp">Add Employee</button>
+                    <button type="button" class="btn btn-warning pull-right" data-toggle="modal" data-target="#newEmp">Add Patient</button>
                     <button class="btn btn-primary pull-right" onclick="enableEditMode($(this))" style="margin-right: 10px;">Edit Patients</button>
                 </div>
             </div>
