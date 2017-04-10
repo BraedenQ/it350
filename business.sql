@@ -114,7 +114,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-INSERT INTO `employee` VALUES (101,1,'Bob','C','495 Keylog Lane','1980-03-15',NULL),(102,2,'Shoe','D','20485 Green Way','1982-12-19',NULL),(103,1,'Grace','M','395929 Great Fire','1960-03-15',NULL),(104,1,'Runner','P','833 Tool Lane','1995-12-26',NULL),(105,2,'Great','A','38 Neat Lane','1990-12-12',NULL),(106,1,'Braeden','Q','485 Trace Hill','1991-01-16',NULL),(201,1,'Grace','Kim','94580 Main','2017-03-06',NULL),(202,2,'Fire','L','48503 Chill','2017-01-23',NULL),(203,2,'Fun','H','3948 Lost','2016-10-18',NULL),(204,2,'Tool','L','3948 Grab','2016-11-20',NULL),(205,1,'Platapus','Pacheco','38958 Phineas','2016-11-14',NULL),(224,1,'Tanner','Perdue','1234 main','2017-04-01',NULL),(225,1,'asdasd','asdasd','asd','2017-04-01',NULL);
+INSERT INTO `employee` VALUES (101,1,'Bob','C','495 Keylog Lane','1980-03-15',NULL),(102,2,'Shoe','D','20485 Green Way','1982-12-19',NULL),(103,1,'Grace','M','395929 Great Fire','1960-03-15',NULL),(104,1,'Runner','P','833 Tool Lane','1995-12-26',NULL),(105,2,'Great','A','38 Neat Lane','1990-12-12',NULL),(106,1,'Braeden','Q','485 Trace Hill','1991-01-16',NULL),(201,1,'Grace','Kim','94580 Main','2017-03-06',NULL),(203,2,'Fun','H','3948 Lost','2016-10-18',NULL),(204,2,'Tool','L','3948 Grab','2016-11-20',NULL),(205,1,'Platapus','Pacheco','38958 Phineas','2016-11-14',NULL),(224,1,'Tanner','Perdue','1234 main','2017-04-01',NULL),(225,1,'asdasd','asdasd','asd','2017-04-01',NULL);
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,7 +196,7 @@ CREATE TABLE `jobReview` (
   `jobID` int(11) DEFAULT NULL,
   `notes` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`revID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -205,7 +205,7 @@ CREATE TABLE `jobReview` (
 
 LOCK TABLES `jobReview` WRITE;
 /*!40000 ALTER TABLE `jobReview` DISABLE KEYS */;
-INSERT INTO `jobReview` VALUES (1,1,'wahoo!'),(2,2,'I like where you\'re going'),(3,3,'Great work!'),(4,4,'You\'re about to be fired'),(5,5,'Work out more'),(6,10,NULL),(7,11,NULL);
+INSERT INTO `jobReview` VALUES (1,1,'wahoo!'),(3,3,'Great work!'),(4,4,'You'),(5,5,'Work out more'),(6,10,''),(7,11,''),(8,12,NULL),(9,13,NULL),(10,14,NULL);
 /*!40000 ALTER TABLE `jobReview` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -250,8 +250,10 @@ CREATE TABLE `patient` (
   `lastName` varchar(20) DEFAULT NULL,
   `address` varchar(30) DEFAULT NULL,
   `doctor` int(11) DEFAULT NULL,
+  `entryDate` date DEFAULT NULL,
+  `departDate` date DEFAULT NULL,
   PRIMARY KEY (`patientID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -260,7 +262,7 @@ CREATE TABLE `patient` (
 
 LOCK TABLES `patient` WRITE;
 /*!40000 ALTER TABLE `patient` DISABLE KEYS */;
-INSERT INTO `patient` VALUES (1,1,'Braeden','Cool','85 Wymoung',101),(2,2,'Tanner','Cool','93 Fire Lane',102),(3,1,'Grace','Chili','9395 Man Lane',101),(4,1,'Chicken','Nuggets','294 McDonalds',103);
+INSERT INTO `patient` VALUES (1,1,'Braeden','Cool','85 Wymoung',101,'2017-04-08',NULL),(2,2,'Tanner','Cool','93 Fire Lane',102,'2017-04-08',NULL),(3,1,'Hi','Chili','9395 Man Lane',101,'2017-04-08',NULL),(4,1,'Chicken','Nuggets','294 McDonalds',103,'2017-04-08',NULL),(6,1,'Seth','pacheco','1234 main',103,'2017-04-08',NULL),(9,1,'Hi','asdf','jksdfkjasd',102,'2017-04-08',NULL);
 /*!40000 ALTER TABLE `patient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -275,7 +277,7 @@ CREATE TABLE `supportStaff` (
   `emplID` int(11) NOT NULL,
   `job` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`job`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -284,7 +286,7 @@ CREATE TABLE `supportStaff` (
 
 LOCK TABLES `supportStaff` WRITE;
 /*!40000 ALTER TABLE `supportStaff` DISABLE KEYS */;
-INSERT INTO `supportStaff` VALUES (201,1),(202,2),(203,3),(204,4),(205,5),(224,10),(225,11);
+INSERT INTO `supportStaff` VALUES (201,1),(203,3),(204,4),(205,5),(224,10),(225,11),(226,12),(227,13),(228,14);
 /*!40000 ALTER TABLE `supportStaff` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -374,4 +376,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-01 22:12:54
+-- Dump completed on 2017-04-10 12:50:41
